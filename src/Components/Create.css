@@ -1,0 +1,21 @@
+textarea {
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid #000;
+  border-radius: 4px;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+textarea:active,
+textarea:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 0 5px var(--primary-color);
+  -webkit-box-shadow: 0 0 5px var(--primary-color);
+  -moz-box-shadow: 0 0 5px var(--primary-color);
+}
+
+.buttons button {
+  margin-right: 1rem;
+}
