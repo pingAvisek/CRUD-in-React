@@ -17,17 +17,18 @@ function App() {
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
-
     fetch(url, { method: "GET" })
       .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           setData(result);
+          // console.log(result);
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
+          console.log(error);
         }
       );
   }, []);
@@ -35,9 +36,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Create url={url} />
       <myNotes.Provider value={data}>
         <contextURL.Provider value={url}>
+          <Create />
           <MyNotes />
         </contextURL.Provider>
       </myNotes.Provider>

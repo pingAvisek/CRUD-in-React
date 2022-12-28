@@ -33,6 +33,7 @@ Start the server
 
 ```bash
   npm run start
+  npx json-server --watch data/data.json --port 8000
 ```
 
 ## Author

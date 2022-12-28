@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { contextURL } from "../App";
 import "./Create.css";
 
-const Create = ({ url }) => {
+const Create = () => {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
+  const url = useContext(contextURL);
 
   const getTitleAndNotes = (e) => {
     setNotes(e.target.value);
@@ -17,9 +19,8 @@ const Create = ({ url }) => {
   };
 
   const createHandler = () => {
-    setTitle(getTitle(notes));
-
     if (title && notes) {
+      setTitle(getTitle(notes));
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -27,7 +28,9 @@ const Create = ({ url }) => {
       }).then(() => {
         console.log("New note created");
       });
+      setNotes("");
     }
+    window.location.reload();
   };
 
   const resetHandler = () => {
